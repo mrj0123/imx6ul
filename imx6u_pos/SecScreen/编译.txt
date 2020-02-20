@@ -1,0 +1,3 @@
+$CC test_window.c -Iinclude -ldirectfb -Llib -ldirect -lts -lfusion
+
+$CC test_window.c -Iinclude -Llib -ldirect -ldirectfb -lts -lfusion

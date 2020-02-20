@@ -1,0 +1,128 @@
+get qr
+fd=5 c_send packet start!send once packet data:EA03000000000000 ;ret:8
+send packet over!
+clean phead:cmd=0,len=0,pHead=1992014936?????????????
+begin recv : recvfd=5
+recvfrom select ret=1
+end recv : recvfd=5
+recv head cmd=11002,length=0
+recvdata:
+recv data OK!
+c pHead cmd=11002,length=0,pHead=1992014936get qr:x v
+解密前dbase64后:C7FFEF
+解密：key1=YXP,sEY@,key2=.X&yrt@l,key3=Znk.2@O0
+解密后数据:BB16E7
+解密后dbase前数据len=-228:
+*** Error in `./ConsumeSer': double free or corruption (out): 0x762004a0 ***
+Aborted
+
+3khW4lQngBm0itA07VoeTQnhHWN8rowe0a6PBGjvye7gJ+WOJVTLT9+/r4l1zYk=
+3khW4lQngBm0itA07VoeTQnhHWN8rowe0a6PBGjvye7gJ+WOJVTLT9+/r4l1zYk3gW93knmNrF8=
+
+3khW4lQngBm0itA07VoeTQnhHWN8rowe0a6PBGjvye7gJ+WOJVTLT9+/r4l1zYk=
+解密前dbase64后:DE4856E254278019B48AD034ED5A1E4D09E11D637CAE8C1ED1AE8F0468EFC9EEE027E58E2554CB4FDFBFAF8975CD89
+解密：key1=YXP,sEY@,key2=.X&yrt@l,key3=Znk.2@O0
+解密后数据:3132343537383031303030303030303030303030303030303030333539313835323031383039313299B4B588A702C3
+解密后dbase前数据len=-148:
+
+3khW4lQngBm0itA07VoeTQnhHWN8rowe0a6PBGjvye7gJ+WOJVTLT9+/r4l1zYk=
+解密前dbase64后:DE4856E254278019B48AD034ED5A1E4D09E11D637CAE8C1ED1AE8F0468EFC9EEE027E58E2554CB4FDFBFAF8975CD89
+解密前dbase64后:DE4856E254278019B48AD034ED5A1E4D09E11D637CAE8C1ED1AE8F0468EFC9EEE027E58E2554CB4FDFBFAF8975CD89
+解密：key1=YXP,sEY@,key2=.X&yrt@l,key3=Znk.2@O0
+解密后数据:3132343537383031303030303030303030303030303030303030333539313835323031383039313299B4B588A702C3
+解密后dbase前数据len=47:3132343537383031303030303030303030303030303030303030333539313835323031383039313299B4B588A702C3
+解码结果:1245780100000000000000000035918520180912′μ§ 
+
+
+typedef struct Consume_Struct{
+    int cardID;             //卡号
+    int accountID;          //账号
+    int contypeID;          //操作类型（0消费 1存款 2取款 3洗衣）
+    int fType;              //消费方式（0刷卡，1刷脸，2账号二维码，3支付二维码）
+    int flowID;             //终端流水号（消费时间秒值,时间戳）
+    int flowMoney;          //消费金额（洗衣模式为消费洗衣劵数量）
+    int status;             //当前消费状态.0表示未消费,
+                            //1表示已收到消费请求，但尚未刷卡或扫码，可以取消
+                            //2表示用户已刷卡或扫码，不能取消，只能等待返回
+                            //3(0?)表示数据已返回，等待用户取走最后结果
+    char pwd[8];            //卡片消费密码
+    char consumeNum[128];   //二维码（支付宝或微信）
+    char retstring[512];    //消费结果，当status=3时有效。服务端返回的字符串
+}consume_struct_t;
+
+
+{"areaID":3,
+"cardID":0,
+"cmd":3001,
+"consumeNum":"",
+"contypeID":0,
+"fType":2,
+"flowID":0,??????????????????????????????????????
+"flowMoney":0,
+"pwd":"",
+"termCode":"123asdzxc",
+"termID":2}
+
+
+{"areaID":3,
+"cardID":0,
+"cmd":3001,
+"consumeNum":"",
+"contypeID":0,
+"fType":2,
+"flowID":1536865566,
+"flowMoney":0,
+"pwd":"",
+"termCode":"123asdzxc",
+"termID":2,
+"accountId":359185
+}
+
+{"areaID":3,
+"cardID":0,
+"cmd":3001,
+"consumeNum":"",
+"contypeID":1,
+"fType":2,
+"flowID":1536866128,
+"flowMoney":101,
+"pwd":"",
+"termCode":"123asdzxc",
+"termID":2,
+"accountId":359185}
+
+{"areaID":3,
+"cardID":-1808768565,
+"cmd":3001,
+"consumeNum":"",
+"contypeID":1,
+"fType":0,
+"flowID":1536866907,
+"flowMoney":101, 
+"pwd":"",
+"termCode":"123asdzxc",
+"termID":2,"accountId":0}
+
+{"cmd"=3009,"flowID":1536867374,"termCode":"123asdzxc","termID":2}
+
+{"areaID":3,
+"cardID":-1808768565,
+"cmd":3001,
+"consumeNum":"",
+"contypeID":1,
+"fType":0,
+"flowID":1536867374,
+"flowMoney":101,
+"pwd":"",
+"termCode":"123asdzxc",
+"termID":2,
+"accountId":0}
+
+
+[2019-01-17 13:59:25] NKTY Pos Program Started
+[2019-01-17 13:59:25]===============terminalProject Started============
+[2019-01-17 13:59:25]===============Pos320Main Started=============
+[2019-01-17 13:59:25]===============secscreen Started=============
+[2019-01-17 13:59:25]===============scanqrser Started=============
+[2019-01-17 13:59:25]===============ConsumeSer Started=============
+[2019-01-17 13:59:25]===============terminalProject Started============

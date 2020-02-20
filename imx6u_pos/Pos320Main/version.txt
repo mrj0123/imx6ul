@@ -1,0 +1,3 @@
+secscreen		1.0.2
+scanqrser	    1.0.22
+consumeser  1.0.22
